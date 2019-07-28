@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<TePhase name="71 Kiefer - Eiche">
+<TePhaseCondition class="de.nwfva.silviculture.base.PcStandTmpInteger">
+<TreatmentElementParameter name="switch" label="Schalter" class="java.lang.Boolean" value="false" />
+<TreatmentElementParameter name="standTmpInteger" label="Indicator Nummer" class="java.lang.Integer" value="71" />
+</TePhaseCondition>
+<TeHeightInterval name="Immer" startHeight="0.0" endHeight="200.0">
+<TreatmentElement name="Plant" label="Pflanzen " class="de.nwfva.silviculture.base.TePlant">
+<TreatmentElementParameter name="schlussgrad" label="Kronenschlussgrad" class="java.lang.Double" value="0.1" />
+<TreatmentElementParameter name="material" label="Baumarten und Dichte" class="java.lang.String" value="711=0.7=25.0;110=0.15=20.0" />
+<TreatmentElementParameter name="verbandx" label="Pflanzverband" class="java.lang.Double" value="2.0" />
+<TreatmentElementParameter name="verbandy" label="Pflanzverband" class="java.lang.Double" value="3.0" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Erschliessung" startHeight="12.0" endHeight="200.0">
+<TreatmentElement name="skidtrails" label="Erschließung" class="de.nwfva.silviculture.base.TeSTrails">
+<TreatmentElementParameter name="width" label="Gassenbreite" class="java.lang.Integer" value="4" />
+<TreatmentElementParameter name="distance" label="Gassenabstand" class="java.lang.Double" value="20.0" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Nachpflanzen" startHeight="12.0" endHeight="200.0">
+<TreatmentElement name="Plant gaps" label="Löcher auspflanzen" class="de.nwfva.silviculture.base.TePlantGap">
+<TreatmentElementParameter name="lochdurchmesser" label="Minimale Lochgröße" class="java.lang.Double" value="10.0" />
+<TreatmentElementParameter name="material" label="Baumarten und Dichte" class="java.lang.String" value="711=0.7=25.0;" />
+<TreatmentElementParameter name="verbandx" label="Pflanzverband" class="java.lang.Double" value="2.0" />
+<TreatmentElementParameter name="verbandy" label="Pflanzverband" class="java.lang.Double" value="3.0" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Z-Baumauswahl" startHeight="12.0" endHeight="200.0">
+<TreatmentElement name="crop tree selection" label="Z-Baum Auswahl" class="de.nwfva.silviculture.base.TeSelectCropTrees">
+<TreatmentElementParameter name="code1" label="1. Baumart" class="java.lang.Integer" value="711" />
+<TreatmentElementParameter name="nha1" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="160" />
+<TreatmentElementParameter name="mixpercent1" label="Mischungsanteil" class="java.lang.Double" value="70.0" />
+<TreatmentElementParameter name="code2" label="2. Baumart" class="java.lang.Integer" value="110" />
+<TreatmentElementParameter name="nha2" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="80" />
+<TreatmentElementParameter name="mixpercent2" label="Mischungsanteil" class="java.lang.Double" value="20.0" />
+<TreatmentElementParameter name="code3" label="3. Baumart" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="nha3" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="mixpercent3" label="Mischungsanteil" class="java.lang.Double" value="0.0" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Durchforstung" startHeight="12.0" endHeight="50.0">
+<TreatmentElement name="Release Crop Trees" label="Z-Bäume freistellen" class="de.nwfva.silviculture.base.TeThinCTByCompetition">
+<TreatmentElementParameter name="maxOut" label="Maximales Durchforstungsvolumen" class="java.lang.Double" value="50.0" />
+<TreatmentElementParameter name="maxOverlap" label="Maximale Kronenüberlappung" class="java.lang.Double" value="0.0" />
+<TreatmentElementParameter name="nCompetitorToThin" label="Bedränger" class="java.lang.Double" value="1.5" />
+</TreatmentElement>
+<TreatmentElement name="Thinning from above" label="Hochdurchforstung" class="de.nwfva.silviculture.base.TeThinFromAbove">
+<TreatmentElementParameter name="maxOut" label="Maximales Durchforstungsvolumen" class="java.lang.Double" value="50.0" />
+<TreatmentElementParameter name="thinningFactor" label="Durchforstungsstärke " class="java.lang.Double" value="1.0" />
+<TreatmentElementParameter name="maxBgradAbsenkung" label="Maximale Bestockungsgradabsenkung" class="java.lang.Double" value="0.4" />
+</TreatmentElement>
+<TreatmentElement name="nature protection" label="Naturschutz" class="de.nwfva.silviculture.base.TeProtection">
+<TreatmentElementParameter name="nhabitat" label="Habitatbäume" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="hardwoodOnly" label="Habitat tree" class="java.lang.String" value="2 nur Buche oder Eiche" />
+<TreatmentElementParameter name="minorities" label="Seltene Arten" class="java.lang.Boolean" value="true" />
+<TreatmentElementParameter name="minimumCoverage" label="Minimaler Schlussgrad" class="java.lang.Double" value="0.0" />
+<TreatmentElementParameter name="protectDBH" label="Bäume mit großen BHD" class="java.lang.Double" value="999.9" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Stadium3" startHeight="20.0" endHeight="200.0">
+<TreatmentElement name="harvest by TargetDBH in Period" label="Modifizierte Zielstärke" class="de.nwfva.silviculture.base.TeHarvestTargetDBHPeriod">
+<TreatmentElementParameter name="zeit" label="Zeitrahmen" class="java.lang.Integer" value="20" />
+<TreatmentElementParameter name="criterium" label="Bedingung" class="java.lang.String" value="1 D_CT30% > [cm]" />
+<TreatmentElementParameter name="wert" label="Wert" class="java.lang.Double" value="40.0" />
+<TreatmentElementParameter name="exceptSp" label="ausgenommen" class="java.lang.String" value="111,112,110" />
+<TreatmentElementParameter name="phaseNo" label="Nach Abschluss der Holzernte" class="java.lang.Integer" value="70" />
+</TreatmentElement>
+<TreatmentElement name="harvest by target dbh" label="Zielstärkennutzung (strickt)" class="de.nwfva.silviculture.base.TeHarvestTargetDBHStrict">
+<TreatmentElementParameter name="maxVolume" label="maximales Volumen" class="java.lang.Double" value="150.0" />
+<TreatmentElementParameter name="neuezst" label="Zielstärke" class="java.lang.String" value="711=50.0;110=70.0" />
+</TreatmentElement></TeHeightInterval></TePhase>

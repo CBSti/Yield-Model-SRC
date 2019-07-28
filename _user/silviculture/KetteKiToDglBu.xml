@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<TeChain name="Kette Ki To Dgl/Bu">
+<TePhase name="Umbau Kiefer">
+<TePhaseCondition class="de.nwfva.silviculture.base.PcStandTmpInteger">
+<TreatmentElementParameter name="switch" label="Schalter" class="java.lang.Boolean" value="false" />
+<TreatmentElementParameter name="standTmpInteger" label="Indicator Nummer" class="java.lang.Integer" value="0" />
+</TePhaseCondition>
+<TeHeightInterval name="Abnutzung Kiefer" startHeight="0.0" endHeight="200.0">
+<TreatmentElement name="crop tree selection" label="Z-Baum Auswahl" class="de.nwfva.silviculture.base.TeSelectCropTrees">
+<TreatmentElementParameter name="code1" label="1. Baumart" class="java.lang.Integer" value="711" />
+<TreatmentElementParameter name="nha1" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="180" />
+<TreatmentElementParameter name="mixpercent1" label="Mischungsanteil" class="java.lang.Double" value="100.0" />
+<TreatmentElementParameter name="code2" label="2. Baumart" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="nha2" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="mixpercent2" label="Mischungsanteil" class="java.lang.Double" value="0.0" />
+<TreatmentElementParameter name="code3" label="3. Baumart" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="nha3" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="mixpercent3" label="Mischungsanteil" class="java.lang.Double" value="0.0" />
+</TreatmentElement>
+<TreatmentElement name="harvest by TargetDBH in Period" label="Modifizierte Zielstärke" class="de.nwfva.silviculture.base.TeHarvestTargetDBHPeriod">
+<TreatmentElementParameter name="zeit" label="Zeitrahmen" class="java.lang.Integer" value="30" />
+<TreatmentElementParameter name="criterium" label="Bedingung" class="java.lang.String" value="1 D_CT30% > [cm]" />
+<TreatmentElementParameter name="wert" label="Wert" class="java.lang.Double" value="38.0" />
+<TreatmentElementParameter name="exceptSp" label="ausgenommen" class="java.lang.String" value="211" />
+<TreatmentElementParameter name="phaseNo" label="Nach Abschluss der Holzernte" class="java.lang.Integer" value="62" />
+</TreatmentElement>
+<TreatmentElement name="Plant" label="Pflanzen " class="de.nwfva.silviculture.base.TePlant">
+<TreatmentElementParameter name="schlussgrad" label="Kronenschlussgrad" class="java.lang.Double" value="0.3" />
+<TreatmentElementParameter name="material" label="Baumarten und Dichte" class="java.lang.String" value="211=0.3=32.4;611=0.6=37.0" />
+<TreatmentElementParameter name="verbandx" label="Pflanzverband" class="java.lang.Double" value="2.0" />
+<TreatmentElementParameter name="verbandy" label="Pflanzverband" class="java.lang.Double" value="3.0" />
+</TreatmentElement></TeHeightInterval></TePhase>
+<TePhase name="62_Douglasie_Buche">
+<TePhaseCondition class="de.nwfva.silviculture.base.PcStandTmpInteger">
+<TreatmentElementParameter name="switch" label="Schalter" class="java.lang.Boolean" value="true" />
+<TreatmentElementParameter name="standTmpInteger" label="Indicator Nummer" class="java.lang.Integer" value="62" />
+</TePhaseCondition>
+<TeHeightInterval name="Immer" startHeight="0.0" endHeight="200.0">
+<TreatmentElement name="crop tree selection" label="Z-Baum Auswahl" class="de.nwfva.silviculture.base.TeSelectCropTrees">
+<TreatmentElementParameter name="code1" label="1. Baumart" class="java.lang.Integer" value="611" />
+<TreatmentElementParameter name="nha1" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="140" />
+<TreatmentElementParameter name="mixpercent1" label="Mischungsanteil" class="java.lang.Double" value="66.0" />
+<TreatmentElementParameter name="code2" label="2. Baumart" class="java.lang.Integer" value="211" />
+<TreatmentElementParameter name="nha2" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="120" />
+<TreatmentElementParameter name="mixpercent2" label="Mischungsanteil" class="java.lang.Double" value="33.0" />
+<TreatmentElementParameter name="code3" label="3. Baumart" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="nha3" label="Anzahl der Z-Bäume" class="java.lang.Integer" value="0" />
+<TreatmentElementParameter name="mixpercent3" label="Mischungsanteil" class="java.lang.Double" value="0.0" />
+</TreatmentElement>
+<TreatmentElement name="skidtrails" label="Erschließung" class="de.nwfva.silviculture.base.TeSTrails">
+<TreatmentElementParameter name="width" label="Gassenbreite" class="java.lang.Integer" value="4" />
+<TreatmentElementParameter name="distance" label="Gassenabstand" class="java.lang.Double" value="20.0" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Pflegephase" startHeight="14.0" endHeight="30.0">
+<TreatmentElement name="Thin Crop Trees by A-Wert" label="Durchforstung nach A-Wert" class="de.nwfva.silviculture.base.TeThinCTByAWert">
+<TreatmentElementParameter name="aWert" label="Durchforstung nach A-Wert" class="java.lang.Double" value="4.0" />
+</TreatmentElement>
+<TreatmentElement name="Thinning from above" label="Hochdurchforstung" class="de.nwfva.silviculture.base.TeThinFromAbove">
+<TreatmentElementParameter name="maxOut" label="Maximales Durchforstungsvolumen" class="java.lang.Double" value="80.0" />
+<TreatmentElementParameter name="thinningFactor" label="Durchforstungsstärke " class="java.lang.Double" value="1.0" />
+<TreatmentElementParameter name="maxBgradAbsenkung" label="Maximale Bestockungsgradabsenkung" class="java.lang.Double" value="0.3" />
+</TreatmentElement></TeHeightInterval>
+<TeHeightInterval name="Holzernte" startHeight="34.0" endHeight="200.0">
+<TreatmentElement name="harvest by target dbh" label="Zielstärkennutzung (strickt)" class="de.nwfva.silviculture.base.TeHarvestTargetDBHStrict">
+<TreatmentElementParameter name="maxVolume" label="maximales Volumen" class="java.lang.Double" value="150.0" />
+<TreatmentElementParameter name="neuezst" label="Zielstärke" class="java.lang.String" value="default" />
+</TreatmentElement></TeHeightInterval></TePhase></TeChain>

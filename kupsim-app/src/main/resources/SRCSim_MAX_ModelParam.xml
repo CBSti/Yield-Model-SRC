@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ForestSimulatorSettings.xsl"?>
+<ForestSimulatorSettings>
+  <GeneralSettings>
+    <ModelRegion>KUP Deutschland</ModelRegion>
+    <ErrorComponent>true</ErrorComponent>
+    <IngrowthModul>false</IngrowthModul>
+    <DeadwoodModul>false</DeadwoodModul>
+    <TimeStep>1</TimeStep>
+    <Author>Stiehm, C. und Nagel, J.</Author>
+    <FirstDate>2017</FirstDate>
+    <LastChange>07.02.2017</LastChange>
+    <Literature>Nagel, J.; Duda, H.; Hansen, J. (2006): Forest Simulator BWINPro7. Forst und Holz 61, Heft 10, S.427-429</Literature>
+    <Description>Wachstumsmodell  für KUP aufbauend auf Treegross </Description>
+    <SortingModul></SortingModul>
+    <BiomassModul></BiomassModul>
+    <DebriswoodModul>none</DebriswoodModul>
+  </GeneralSettings>
+  <!-- sp.h100 = lMeanY1; t.cw = awc; t.c66xy = prec; t.si = temp; t.d = bz; t.h = l; t.cb = doyPlant; t.age = year; t.c66c = BAL, t.c66 = basal area  -->
+  <SpeciesDefinition>
+    <Code>431</Code>
+    <ShortName>MAX</ShortName>
+    <LongName>'Max 1'</LongName>
+    <LatinName>Populus </LatinName>
+    <InternalCode>430</InternalCode>
+    <CodeGroup>400</CodeGroup>
+    <HandledLikeCode>431</HandledLikeCode>
+    <HeightCurve>2</HeightCurve>
+    <UniformHeightCurveXML> exp(17.67836 + 0.01168 * t.c66xy -0.57383 * t.si -0.05826 * t.cb)/(1.0 + exp(17.67836 + 0.01168 * t.c66xy -0.57383 * t.si -0.05826 * t.cb))</UniformHeightCurveXML> <!-- survInitGLM-->
+    <HeightVariation>0.0</HeightVariation>
+    <DiameterDistributionXML>(1.40140 + 0.01382 * t.cw + 0.00758 * t.c66xy -0.01960 * t.cb)^2</DiameterDistributionXML> <!-- lMeanY1LM -->
+    <VolumeFunctionXML>
+      (1.13225 * sp.h100 -0.02713 * sp.h100^2)*(((0.1/(1.13225 * sp.h100 -0.02713 * sp.h100^2))^(exp(0.69183 + 0.55015 * sp.h100)))-ln(1.0-random))^(1.0/(exp(0.69183 + 0.55015 * sp.h100)))
+    </VolumeFunctionXML> <!-- Weibull distribution random generation of height values with wbScaleLM and wbShapeLM -->
+    <StemVolumeFunction>  (0.16448  + 0.73343 * t.h)^2 </StemVolumeFunction> <!--rcdBasCompLM -->
+    <Crownwidth>0.5</Crownwidth>
+    <Crownbase>0.1</Crownbase>
+    <CrownType>0</CrownType>
+    <SiteIndex>  (0.30820 + 0.32405 * t.h )^(1/0.4) </SiteIndex> <!-- yieldCompR2LM -->
+    <SiteIndexHeight> (-0.18519 + 0.65825 * t.h)^2  </SiteIndexHeight> <!--dbhBasCompLM -->
+    <PotentialHeightIncrement> ( 0.08442 + 0.48347 * t.h)^2  </PotentialHeightIncrement> <!-- yieldCompR2LM-->
+    <HeightIncrement>  (-2.41911 - 0.01482 * t.c66c - 0.05726 * t.age + 0.05136 * t.cw  +  0.03476 * t.c66xy - 0.08366 * t.si -0.00032 * t.cw * t.c66xy)^2 </HeightIncrement> <!-- incrHRot1LM-->
+    <HeightIncrementError>0.0</HeightIncrementError>
+    <DiameterIncrement> (4.67026 -0.00640 * t.c66c - 0.27649 * t.age +  0.00384 * t.d + 0.00278 * t.c66xy - 0.13918 * t.si)^2 </DiameterIncrement> <!--incrHRot2LM -->
+    <DiameterIncrementError>0.0</DiameterIncrementError>
+    <MaximumDensity> exp(0.04792 * t.c66xy -0.36599 * t.si) </MaximumDensity> <!-- incrHSmallRot2LM-->
+    <CropTreeNumber>500</CropTreeNumber>
+    <MaximumAge>30</MaximumAge>
+    <Ingrowth>treegross.base.Ingrowth2</Ingrowth>
+    <Decay> 7.56286 + 0.15150 * t.h + 0.02163 * t.d + 0.01871 * t.c66xy  -0.45487 * t.si - 0.00010 * t.d * t.c66xy  </Decay> <!--respIncrLM -->
+    <TargetDiameter>80.0</TargetDiameter>
+    <HeightOfThinningStart></HeightOfThinningStart> 
+    <ModerateThinning>14.0;0.55;18.0;18.0;0.60;20.0;20.0;0.65;24.0;24.0;0.70;100.0</ModerateThinning>
+    <Color>255;255;51</Color>
+    <Competition>treegross.base.Competition</Competition>
+    <TaperFunction> </TaperFunction> 
+    <CoarseRootBiomass></CoarseRootBiomass>
+    <SmallRootBiomass>  </SmallRootBiomass> 
+    <FineRootBiomass> exp(12.36120 + 0.28398 *t.h + 0.00827 * t.c66xy -0.83512 * t.si)/(1.0 + exp(12.36120 + 0.28398 *t.h + 0.00827 * t.c66xy -0.83512 * t.si))   </FineRootBiomass> <!--survRespGLM -->
+    <TotalRootBiomass>  </TotalRootBiomass> 
+  </SpeciesDefinition>
+</ForestSimulatorSettings>

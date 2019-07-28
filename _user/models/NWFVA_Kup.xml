@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ForestSimulatorSettings.xsl"?>
+<ForestSimulatorSettings>
+  <GeneralSettings>
+    <ModelRegion>KUP Deutschland</ModelRegion>
+    <ErrorComponent>true</ErrorComponent>
+    <IngrowthModul>false</IngrowthModul>
+    <DeadwoodModul>false</DeadwoodModul>
+    <TimeStep>1</TimeStep>
+    <Author>Stiehm, C. und Nagel, J.</Author>
+    <FirstDate>2017</FirstDate>
+    <LastChange>07.02.2017</LastChange>
+    <Literature>Nagel, J.; Duda, H.; Hansen, J. (2006): Forest Simulator BWINPro7. Forst und Holz 61, Heft 10, S.427-429</Literature>
+    <Description>Wachstumsmodell  für KUP aufbauend auf Treegross </Description>
+    <SortingModul></SortingModul>
+    <BiomassModul></BiomassModul>
+    <DebriswoodModul>none</DebriswoodModul>
+  </GeneralSettings>
+
+  <SpeciesDefinition>
+    <Code>431</Code>
+    <ShortName>MaxL</ShortName>
+    <LongName>Pappel Max L</LongName>
+    <LatinName>Populus </LatinName>
+    <InternalCode>430</InternalCode>
+    <CodeGroup>400</CodeGroup>
+    <HandledLikeCode>431</HandledLikeCode>
+    <HeightCurve>2</HeightCurve>
+    <UniformHeightCurveXML> 1.3+(sp.hg-1.3)*exp(0.14657227*(1.0-(sp.dg/t.d)))*exp(3.78686023*((1.0/sp.dg)-(1.0/t.d))) /* Eiche (NAGEL 1999)*/ </UniformHeightCurveXML>
+    <HeightVariation>0.0</HeightVariation>
+    <DiameterDistributionXML> (1.1367972 * sp.h100 -0.0025830 * sp.h100^2)*(((1/(1.1367972 * sp.h100 -0.0025830 * sp.h100^2))^(exp(0.78547 + 0.04579 * sp.h100)))-ln(1.0-random))^(1.0/(exp(0.78547 +  0.04579 * sp.h100)))
+  </DiameterDistributionXML> <!-- Weibull distribution random generation of height values -->
+    <VolumeFunctionXML>0.21955 + 7.99725 * (t.c66*100) </VolumeFunctionXML> <!--Rot1 Estimation of dryMass by basal area-->
+    <StemVolumeFunction>(0.1268763 +  0.9075940 * (t.h)^0.5)^2 </StemVolumeFunction> <!--Rot1 Estimation of Basal Area for RCD by Height-->
+    <Crownwidth>0.5</Crownwidth>
+    <Crownbase>0.1</Crownbase>
+    <CrownType>0</CrownType>
+    <SiteIndex> (4.406507 - 0.105896 * t.c66c)^2 </SiteIndex> <!-- Rot2 Height increment by BAL [m² ha⁻¹] from prior year -->
+    <SiteIndexHeight> (1.199962)^2  </SiteIndexHeight> <!-- Rot2 Height increment for trees < 1.3 m -->
+    <PotentialHeightIncrement> exp(1.830304 *  t.cw) * (10^-6) </PotentialHeightIncrement> <!--Rot1 Estimation of Basal Area for RCD by Height-->
+    <HeightIncrement> (4.174934 - 0.049721 * t.c66c)^2 </HeightIncrement> <!-- Rot1 Height increment by BAL RCD [m² ha⁻¹] from prior year -->
+    <HeightIncrementError>0.0</HeightIncrementError>
+    <DiameterIncrement>18.70168 + 0.30136 * t.h </DiameterIncrement> <!--Resprout function -->
+    <DiameterIncrementError>0.0</DiameterIncrementError>
+    <MaximumDensity>1.0/(1.0+exp(-(9.618675+0.016114*t.d-0.066036*t.h)))</MaximumDensity> <!-- GLM Survival Rate after planting-->
+    <CropTreeNumber>500</CropTreeNumber>
+    <MaximumAge>30</MaximumAge>
+    <Ingrowth>treegross.base.Ingrowth2</Ingrowth>
+    <Decay>1.0-((sp.year-t.out-5.0)/30.0)</Decay> <!-- GLM survival rate after cutting -->
+    <TargetDiameter>80.0</TargetDiameter>
+    <HeightOfThinningStart></HeightOfThinningStart> 
+    <ModerateThinning>14.0;0.55;18.0;18.0;0.60;20.0;20.0;0.65;24.0;24.0;0.70;100.0</ModerateThinning>
+    <Color>255;255;51</Color>
+    <Competition>treegross.base.Competition</Competition>
+    <TaperFunction> </TaperFunction> 
+    <CoarseRootBiomass></CoarseRootBiomass>
+    <SmallRootBiomass>(-6.765309+0.016440*t.d+0.007479*t.h+0.002999*t.age)^2</SmallRootBiomass> <!-- Estimate mean stand height after planting -->
+    <FineRootBiomass>exp(-3.824109 + 2.735117 * t.cw) * (10^-6)</FineRootBiomass> <!-- Estimate basal area dbh by l-->
+    <TotalRootBiomass>0.138998 + 1641.138 * t.c66 </TotalRootBiomass> <!-- Rot2 Estimation of dryMass by basal area-->
+  </SpeciesDefinition>
+</ForestSimulatorSettings>

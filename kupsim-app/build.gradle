@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
+        classpath 'org.apache.logging.log4j:log4j-core:2.8.2'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'application'
+
+mainClassName = "de.nwfva.kupsimulator.KupMainForm"
+
+shadowJar {
+    baseName = 'KUPSim'
+    classifier = null
+    version = null
+    mergeServiceFiles()
+
+}
+
+dependencies {
+    compile project(':kupsim-lib')
+    compile files('../repo/treegross.jar')
+    compile files('../repo/jdom.jar')
+    compile files('../repo/jep-2.4.1.jar')
+    compile files('../repo/sqlitejdbc-v056.jar.jar')
+    compile 'org.apache.commons:commons-configuration2:2.1.1'
+    compile 'commons-beanutils:commons-beanutils:1.9.3'
+    compile 'org.apache.logging.log4j:log4j-api:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
+
+}
+
+
